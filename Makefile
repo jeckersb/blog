@@ -74,6 +74,7 @@ endif
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 	echo "john.eckersberg.com" > $(OUTPUTDIR)/CNAME
+	touch $(OUTPUTDIR)/.nojekyll
 
 github: publish
 	ghp-import -m "Generate Pelican site" -r $(GITHUB_PAGES_REMOTE) -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
